@@ -1,10 +1,11 @@
 import { GitHubCalendar } from "react-github-calendar";
+import { Reveal } from "../components/Reveal";
 import "./GitHubActivity.css";
 
 export function GitHubActivity() {
   return (
     <section id="github" className="github-section">
-      <div className="github-top">
+      <Reveal className="github-top">
         <div className="github-index">
           <span>04</span>
           <span>GITHUB ACTIVITY</span>
@@ -16,9 +17,9 @@ export function GitHubActivity() {
           <span className="github-status-dot" />
           <span>OPEN SOURCE / ACTIVE</span>
         </div>
-      </div>
+      </Reveal>
 
-      <div className="github-intro">
+      <Reveal className="github-intro" delay={0.05}>
         <div className="github-heading">
           <span className="github-kicker">
             CODE / CONSISTENCY / CONTRIBUTIONS
@@ -50,32 +51,48 @@ export function GitHubActivity() {
             <span>↗</span>
           </a>
         </div>
-      </div>
+      </Reveal>
 
       <div className="github-meta-grid">
-        <div className="github-meta-card">
+        <Reveal
+          className="github-meta-card"
+          delay={0.04}
+          y={30}
+        >
           <span>01</span>
           <strong>CONTRIBUTIONS</strong>
           <small>LAST YEAR</small>
-        </div>
+        </Reveal>
 
-        <div className="github-meta-card">
+        <Reveal
+          className="github-meta-card"
+          delay={0.12}
+          y={30}
+        >
           <span>02</span>
           <strong>CODEBASE</strong>
           <small>BUILD / SHIP / REPEAT</small>
-        </div>
+        </Reveal>
 
-        <div className="github-meta-card github-meta-card-accent">
+        <Reveal
+          className="github-meta-card github-meta-card-accent"
+          delay={0.2}
+          y={30}
+        >
           <span>03</span>
           <strong>STATUS</strong>
           <small>
             <i />
             CURRENTLY BUILDING
           </small>
-        </div>
+        </Reveal>
       </div>
 
-      <div className="github-calendar-panel">
+      <Reveal
+        className="github-calendar-panel"
+        delay={0.08}
+        y={45}
+      >
         <div className="github-panel-header">
           <div>
             <span className="github-panel-number">
@@ -137,9 +154,9 @@ export function GitHubActivity() {
 
           <span>github.com/ByThejas ↗</span>
         </div>
-      </div>
+      </Reveal>
 
-      <div className="github-footer">
+      <Reveal className="github-footer" delay={0.05}>
         <span>THEJAS / GITHUB</span>
 
         <div className="github-footer-mark">
@@ -149,7 +166,7 @@ export function GitHubActivity() {
         </div>
 
         <span>04 / 05</span>
-      </div>
+      </Reveal>
     </section>
   );
 }

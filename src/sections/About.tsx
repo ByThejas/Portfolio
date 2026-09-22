@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Reveal } from "../components/Reveal";
 import "./About.css";
 
 type StackCategory =
@@ -20,30 +21,12 @@ const categories: {
   name: StackCategory;
   icon: string;
 }[] = [
-  {
-    name: "All",
-    icon: "▱",
-  },
-  {
-    name: "Languages",
-    icon: "</>",
-  },
-  {
-    name: "Frontend",
-    icon: "▣",
-  },
-  {
-    name: "Backend",
-    icon: "▤",
-  },
-  {
-    name: "Databases",
-    icon: "◉",
-  },
-  {
-    name: "DevOps & Tools",
-    icon: "›_",
-  },
+  { name: "All", icon: "▱" },
+  { name: "Languages", icon: "</>" },
+  { name: "Frontend", icon: "▣" },
+  { name: "Backend", icon: "▤" },
+  { name: "Databases", icon: "◉" },
+  { name: "DevOps & Tools", icon: "›_" },
 ];
 
 const technologies: Tech[] = [
@@ -71,7 +54,6 @@ const technologies: Tech[] = [
     icon: "PY",
     accent: "python",
   },
-
   {
     name: "React",
     category: "Frontend",
@@ -90,7 +72,6 @@ const technologies: Tech[] = [
     icon: "≈",
     accent: "tailwind",
   },
-
   {
     name: "Node.js",
     category: "Backend",
@@ -103,7 +84,6 @@ const technologies: Tech[] = [
     icon: "API",
     accent: "api",
   },
-
   {
     name: "MongoDB",
     category: "Databases",
@@ -116,7 +96,6 @@ const technologies: Tech[] = [
     icon: "F",
     accent: "firebase",
   },
-
   {
     name: "Git",
     category: "DevOps & Tools",
@@ -172,12 +151,13 @@ export function About() {
     activeCategory === "All"
       ? technologies
       : technologies.filter(
-          (tech) => tech.category === activeCategory
+          (technology) =>
+            technology.category === activeCategory
         );
 
   return (
     <section id="about" className="about-section">
-      <div className="about-header">
+      <Reveal className="about-header">
         <div className="about-index">
           <span>03</span>
           <span>ABOUT ME</span>
@@ -188,14 +168,16 @@ export function About() {
         <span className="about-header-label">
           SOFTWARE ENGINEER
         </span>
-      </div>
+      </Reveal>
 
-      <div className="about-intro">
-        <h2>
-          I BUILD
-          <br />
-          <span>THINGS.</span>
-        </h2>
+      <Reveal className="about-intro" delay={0.05}>
+        <div>
+          <h2>
+            I BUILD
+            <br />
+            <span>THINGS.</span>
+          </h2>
+        </div>
 
         <div className="about-intro-copy">
           <span className="about-kicker">
@@ -215,10 +197,20 @@ export function About() {
             interacts with it.
           </p>
         </div>
-      </div>
+      </Reveal>
 
-      <div className="about-grid">
+      <Reveal className="about-grid" delay={0.08} y={45}>
         <div className="identity-card">
+          <div className="identity-photo">
+            <img
+              src="/profile.png"
+              alt="Thejas"
+              draggable="false"
+            />
+          </div>
+
+          <div className="identity-overlay" />
+
           <div className="identity-top">
             <span>THEJAS.OS</span>
 
@@ -228,24 +220,9 @@ export function About() {
             </span>
           </div>
 
-          <div className="identity-center">
-            <div className="identity-symbol">
-              T
-            </div>
-
-            <div className="identity-name">
-              THEJAS
-            </div>
-
-            <div className="identity-role">
-              SOFTWARE ENGINEER
-            </div>
-          </div>
-
-          <div className="identity-bottom">
-            <span>BUILD / SHIP / REPEAT</span>
-
-            <span>v.2026</span>
+          <div className="identity-profile">
+            <strong>THEJAS U</strong>
+            <span>SOFTWARE ENGINEER</span>
           </div>
         </div>
 
@@ -267,12 +244,82 @@ export function About() {
             product.
           </p>
         </div>
-      </div>
+      </Reveal>
 
-      <div className="tech-stack-section">
+      <Reveal
+        className="experience-section"
+        delay={0.05}
+        y={40}
+      >
+        <div className="experience-heading">
+          <div className="experience-heading-left">
+            <span>02</span>
+            <strong>EXPERIENCE</strong>
+          </div>
+
+          <span>PROFESSIONAL / 2026</span>
+        </div>
+
+        <article className="experience-card">
+          <div className="experience-role">
+            <h3>
+              Software Engineer
+              <br />
+              Intern
+            </h3>
+
+            <div className="experience-company">
+              <strong>Edutainer</strong>
+
+              <span>
+                JAN 2026 — MAY 2026
+              </span>
+            </div>
+          </div>
+
+          <div className="experience-content">
+            <p className="experience-summary">
+              Worked across the full stack to build,
+              deploy and maintain production-ready
+              product features.
+            </p>
+
+            <ul>
+              <li>
+                Built and shipped full-stack product
+                features across the <strong>MERN</strong>{" "}
+                stack, developing reusable React
+                interfaces and RESTful backend services.
+              </li>
+
+              <li>
+                Implemented <strong>JWT authentication</strong>{" "}
+                and Context API-based state management,
+                while optimizing MongoDB schemas and
+                backend queries for better performance.
+              </li>
+
+              <li>
+                Deployed and maintained production
+                applications on <strong>Render</strong>,
+                troubleshooting live issues and improving
+                overall application stability.
+              </li>
+            </ul>
+          </div>
+        </article>
+      </Reveal>
+
+      <Reveal
+        className="tech-stack-section"
+        delay={0.05}
+        y={40}
+      >
         <div className="tech-stack-heading">
           <div>
-            <span className="tech-stack-number">02</span>
+            <span className="tech-stack-number">
+              03
+            </span>
 
             <h3>Tech Stack</h3>
           </div>
@@ -291,6 +338,7 @@ export function About() {
               return (
                 <button
                   key={category.name}
+                  type="button"
                   className={`tech-tab ${
                     isActive ? "active" : ""
                   }`}
@@ -316,7 +364,9 @@ export function About() {
                   key={technology.name}
                 >
                   <span
-                    className={`tech-icon ${technology.accent}`}
+                    className={`tech-icon ${
+                      technology.accent ?? ""
+                    }`}
                   >
                     {technology.icon}
                   </span>
@@ -329,35 +379,41 @@ export function About() {
             )}
           </div>
         </div>
-      </div>
+      </Reveal>
 
-      <div className="currently-section">
+      <Reveal
+        className="currently-section"
+        delay={0.05}
+        y={35}
+      >
         <div className="currently-heading">
-          <span>03</span>
+          <span>04</span>
           <span>CURRENTLY</span>
         </div>
 
         <div className="currently-grid">
-          {currently.map((item) => (
-            <div
-              className="currently-item"
+          {currently.map((item, index) => (
+            <Reveal
               key={item.label}
+              className="currently-item"
+              delay={index * 0.08}
+              y={20}
             >
               <span>{item.label}</span>
 
               <strong>{item.value}</strong>
-            </div>
+            </Reveal>
           ))}
         </div>
-      </div>
+      </Reveal>
 
-      <div className="about-footer">
+      <Reveal className="about-footer" delay={0.05}>
         <span>THEJAS / ABOUT</span>
 
         <span>KEEP BUILDING.</span>
 
-        <span>03 / 03</span>
-      </div>
+        <span>03 / 04</span>
+      </Reveal>
     </section>
   );
 }

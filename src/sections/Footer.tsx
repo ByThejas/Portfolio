@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Reveal } from "../components/Reveal";
 import "./Footer.css";
 
 export function Footer() {
@@ -6,13 +7,16 @@ export function Footer() {
 
   useEffect(() => {
     const updateTime = () => {
-      const formatted = new Intl.DateTimeFormat("en-IN", {
-        timeZone: "Asia/Kolkata",
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
-        hour12: false,
-      }).format(new Date());
+      const formatted = new Intl.DateTimeFormat(
+        "en-IN",
+        {
+          timeZone: "Asia/Kolkata",
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+          hour12: false,
+        }
+      ).format(new Date());
 
       setTime(formatted);
     };
@@ -26,7 +30,7 @@ export function Footer() {
 
   return (
     <footer className="site-footer">
-      <div className="footer-top">
+      <Reveal className="footer-top">
         <div className="footer-index">
           <span>05</span>
           <span>END OF PAGE</span>
@@ -37,9 +41,9 @@ export function Footer() {
         <span className="footer-system">
           THEJAS.OS / 2026
         </span>
-      </div>
+      </Reveal>
 
-      <div className="footer-main">
+      <Reveal className="footer-main" delay={0.05}>
         <div className="footer-statement">
           <span>THANKS FOR</span>
 
@@ -65,29 +69,44 @@ export function Footer() {
 
           <div className="footer-status">
             <span className="footer-status-dot" />
-
             <span>ALL SYSTEMS ONLINE</span>
           </div>
         </div>
-      </div>
+      </Reveal>
 
       <div className="footer-grid">
-        <div className="footer-cell footer-credit">
+        <Reveal
+          className="footer-cell footer-credit"
+          delay={0.04}
+          y={25}
+        >
           <span>DESIGNED &amp; DEVELOPED BY</span>
           <strong>THEJAS</strong>
-        </div>
+        </Reveal>
 
-        <div className="footer-cell footer-location">
+        <Reveal
+          className="footer-cell footer-location"
+          delay={0.12}
+          y={25}
+        >
           <span>LOCATION</span>
           <strong>BENGALURU, INDIA</strong>
-        </div>
+        </Reveal>
 
-        <div className="footer-cell footer-clock">
+        <Reveal
+          className="footer-cell footer-clock"
+          delay={0.2}
+          y={25}
+        >
           <span>LOCAL TIME</span>
           <strong>{time}</strong>
-        </div>
+        </Reveal>
 
-        <div className="footer-cell footer-links">
+        <Reveal
+          className="footer-cell footer-links"
+          delay={0.28}
+          y={25}
+        >
           <span>ELSEWHERE</span>
 
           <div>
@@ -115,10 +134,10 @@ export function Footer() {
               X ↗
             </a>
           </div>
-        </div>
+        </Reveal>
       </div>
 
-      <div className="footer-bottom">
+      <Reveal className="footer-bottom" delay={0.08}>
         <span>© 2026 THEJAS</span>
 
         <div className="footer-mark">
@@ -128,7 +147,7 @@ export function Footer() {
         </div>
 
         <span>KEEP BUILDING.</span>
-      </div>
+      </Reveal>
     </footer>
   );
 }

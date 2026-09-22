@@ -1035,90 +1035,6 @@ button {
 }
 
 /* =========================================================
-   FOOTER
-========================================================= */
-
-.hero-footer {
-  position: relative;
-
-  z-index: 5;
-
-  min-height: 0;
-
-  display: grid;
-
-  grid-template-columns:
-    1fr
-    1fr
-    1fr;
-
-  border-left: var(--line);
-  border-right: var(--line);
-  border-bottom: var(--line);
-
-  background: var(--paper);
-}
-
-.footer-block {
-  min-width: 0;
-
-  display: flex;
-
-  flex-direction: column;
-
-  justify-content: center;
-
-  gap: 3px;
-
-  padding: 8px 18px;
-}
-
-.footer-block + .footer-block {
-  border-left: var(--line);
-}
-
-.footer-label {
-  font-family: "DM Mono", monospace;
-
-  font-size: 7px;
-
-  letter-spacing: 0.08em;
-}
-
-.footer-value {
-  display: flex;
-
-  align-items: center;
-
-  gap: 7px;
-
-  font-family: "Space Grotesk", sans-serif;
-
-  font-size: 9px;
-
-  font-weight: 600;
-}
-
-.status-dot {
-  width: 6px;
-  height: 6px;
-
-  border-radius: 50%;
-
-  background: var(--lime);
-
-  border: 1px solid var(--black);
-}
-
-.footer-scroll {
-  align-items: flex-end;
-}
-
-.scroll-arrow {
-  font-size: 14px;
-}
-
-/* =========================================================
    TERMINAL
 ========================================================= */
 
@@ -1661,14 +1577,17 @@ button {
     padding: 17px;
   }
 }
-
 /* =========================================================
-   HERO META BAR — FINAL
+   HERO BOTTOM META — AUTHORITATIVE FIX
+   IMPORTANT:
+   The Hero styles live in src/styles/globals.css.
+   This block owns the bottom metadata row.
 ========================================================= */
 
-.hero-section > .hero-meta-bar {
+.hero-section > .hero-footer {
   position: relative !important;
-  z-index: 20 !important;
+  z-index: 5 !important;
+
   grid-row: 3 !important;
   grid-column: 1 / -1 !important;
 
@@ -1678,7 +1597,7 @@ button {
   min-height: 0 !important;
 
   display: grid !important;
-  grid-template-columns: 1fr 1fr 1fr !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
 
   margin: 0 !important;
   padding: 0 !important;
@@ -1691,7 +1610,8 @@ button {
   overflow: hidden !important;
 }
 
-.hero-section > .hero-meta-bar > .hero-meta-item {
+.hero-section > .hero-footer > .footer-block {
+  width: auto !important;
   min-width: 0 !important;
   min-height: 0 !important;
   height: 100% !important;
@@ -1701,7 +1621,8 @@ button {
   justify-content: center !important;
   align-items: flex-start !important;
 
-  gap: 4px !important;
+  gap: 3px !important;
+
   margin: 0 !important;
   padding: 5px 18px !important;
 
@@ -1709,12 +1630,13 @@ button {
   overflow: hidden !important;
 }
 
-.hero-section > .hero-meta-bar > .hero-meta-item + .hero-meta-item {
+.hero-section > .hero-footer > .footer-block + .footer-block {
   border-left: var(--line) !important;
 }
 
-.hero-section .hero-meta-label {
+.hero-section > .hero-footer .footer-label {
   display: block !important;
+
   margin: 0 !important;
   padding: 0 !important;
 
@@ -1725,14 +1647,16 @@ button {
   letter-spacing: 0.08em !important;
 }
 
-.hero-section .hero-meta-value {
+.hero-section > .hero-footer .footer-value {
   display: flex !important;
   align-items: center !important;
 
   min-width: 0 !important;
   max-width: 100% !important;
+
   margin: 0 !important;
   padding: 0 !important;
+
   gap: 7px !important;
 
   font-family: "Space Grotesk", sans-serif !important;
@@ -1745,7 +1669,7 @@ button {
   text-overflow: ellipsis !important;
 }
 
-.hero-section .hero-meta-dot {
+.hero-section > .hero-footer .status-dot {
   width: 6px !important;
   height: 6px !important;
   min-width: 6px !important;
@@ -1756,56 +1680,55 @@ button {
   background: var(--lime) !important;
 }
 
-.hero-section > .hero-meta-bar > .hero-meta-scroll {
+.hero-section > .hero-footer .footer-scroll {
   align-items: flex-end !important;
   text-align: right !important;
 }
 
-.hero-section .hero-meta-arrow {
+.hero-section > .hero-footer .scroll-arrow {
   margin: 0 !important;
   padding: 0 !important;
+
   font-family: "DM Sans", sans-serif !important;
   font-size: 14px !important;
   line-height: 1 !important;
 }
 
+/* Keep the short-desktop Hero compact. */
 @media (max-height: 760px) and (min-width: 1001px) {
   .hero-section {
     grid-template-rows:
       62px
       minmax(0, 1fr)
-      50px;
+      50px !important;
   }
 }
 
-@media (max-width: 900px) {
-  .hero-section {
-    height: auto;
-    min-height: 100svh;
-    overflow: visible;
-    grid-template-rows: auto auto auto;
-  }
-
-  .hero-section > .hero-meta-bar {
+/* Mobile */
+@media (max-width: 700px) {
+  .hero-section > .hero-footer {
     grid-row: auto !important;
     grid-column: auto !important;
+
     width: 100% !important;
     height: auto !important;
     min-height: auto !important;
+
     grid-template-columns: 1fr !important;
   }
 
-  .hero-section > .hero-meta-bar > .hero-meta-item {
+  .hero-section > .hero-footer > .footer-block {
     height: 52px !important;
     min-height: 52px !important;
   }
 
-  .hero-section > .hero-meta-bar > .hero-meta-item + .hero-meta-item {
+  .hero-section > .hero-footer > .footer-block + .footer-block {
     border-left: 0 !important;
     border-top: var(--line) !important;
   }
 
-  .hero-section > .hero-meta-bar > .hero-meta-scroll {
+  .hero-section > .hero-footer .footer-scroll {
     display: none !important;
   }
 }
+

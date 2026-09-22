@@ -687,49 +687,6 @@ export function Hero() {
             </div>
           </motion.div>
         </div>
-
-        {/* FOOTER */}
-
-        <motion.footer
-          className="hero-meta-bar"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{
-            duration: 0.7,
-            delay: 0.75,
-          }}
-        >
-          <div className="hero-meta-item">
-            <span className="hero-meta-label">
-              BASED IN
-            </span>
-
-            <span className="hero-meta-value">
-              BENGALURU, INDIA
-            </span>
-          </div>
-
-          <div className="hero-meta-item">
-            <span className="hero-meta-label">
-              CURRENTLY
-            </span>
-
-            <span className="hero-meta-value">
-              <span className="hero-meta-dot" />
-              BUILDING DIGITAL PRODUCTS
-            </span>
-          </div>
-
-          <div className="footer-block footer-scroll">
-            <span className="hero-meta-label">
-              SCROLL TO EXPLORE
-            </span>
-
-            <span className="hero-meta-arrow">
-              ↓
-            </span>
-          </div>
-        </motion.footer>
       </section>
 
       {/* =========================

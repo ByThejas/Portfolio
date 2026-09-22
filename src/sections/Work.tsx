@@ -1,3 +1,4 @@
+import { Reveal } from "../components/Reveal";
 import "./Work.css";
 
 const projects = [
@@ -41,7 +42,7 @@ const projects = [
 export function Work() {
   return (
     <section id="work" className="work-section">
-      <div className="work-header">
+      <Reveal className="work-header">
         <div className="work-index">
           <span>02</span>
           <span>SELECTED WORK</span>
@@ -50,9 +51,9 @@ export function Work() {
         <div className="work-header-line" />
 
         <span className="work-count">02 PROJECTS</span>
-      </div>
+      </Reveal>
 
-      <div className="work-intro">
+      <Reveal className="work-intro" delay={0.05}>
         <div>
           <h2>
             SELECTED
@@ -71,13 +72,15 @@ export function Work() {
             and systems I've built along the way.
           </p>
         </div>
-      </div>
+      </Reveal>
 
       <div className="project-grid">
-        {projects.map((project) => (
-          <article
-            className="project-card"
+        {projects.map((project, index) => (
+          <Reveal
             key={project.title}
+            className="project-card"
+            delay={0.08 + index * 0.12}
+            y={45}
           >
             <div className="project-preview">
               <div className="preview-background" />
@@ -154,7 +157,6 @@ export function Work() {
 
               <div className="engineering-details">
                 <span>LIVE PROJECT</span>
-
                 <span>↗</span>
               </div>
 
@@ -176,16 +178,9 @@ export function Work() {
                       viewBox="0 0 24 24"
                       aria-hidden="true"
                     >
-                      <circle
-                        cx="12"
-                        cy="12"
-                        r="9"
-                      />
-
+                      <circle cx="12" cy="12" r="9" />
                       <path d="M3 12h18" />
-
                       <path d="M12 3c2.4 2.4 3.6 5.4 3.6 9S14.4 18.6 12 21" />
-
                       <path d="M12 3c-2.4 2.4-3.6 5.4-3.6 9S9.6 18.6 12 21" />
                     </svg>
                   </a>
@@ -209,22 +204,20 @@ export function Work() {
                 </div>
               </div>
             </div>
-          </article>
+          </Reveal>
         ))}
       </div>
 
-      <div className="work-footer">
+      <Reveal className="work-footer" delay={0.1}>
         <span>02 / 02</span>
 
         <span>
           MORE PROJECTS
-          <span className="coming">
-            COMING SOON
-          </span>
+          <span className="coming">COMING SOON</span>
         </span>
 
         <span>↓ SCROLL</span>
-      </div>
+      </Reveal>
     </section>
   );
 }
