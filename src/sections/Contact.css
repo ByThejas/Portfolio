@@ -1,0 +1,593 @@
+.contact-section {
+  position: relative;
+  background: #c9f052;
+  color: #080808;
+  padding: 28px 40px 0;
+  border-top: 1px solid #080808;
+  overflow: hidden;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.contact-header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 18px;
+  min-height: 32px;
+  border-bottom: 1px solid rgba(8, 8, 8, 0.7);
+  padding-bottom: 14px;
+}
+
+.contact-index {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: "DM Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.contact-index span:first-child {
+  background: #080808;
+  color: #c9f052;
+  padding: 5px 7px;
+}
+
+.contact-index span:last-child {
+  font-weight: 500;
+}
+
+.contact-header-line {
+  height: 1px;
+  background: rgba(8, 8, 8, 0.55);
+}
+
+.contact-header-label {
+  font-family: "DM Mono", monospace;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* =========================
+   MAIN
+========================= */
+
+.contact-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(280px, 0.7fr);
+  gap: 60px;
+  padding: 44px 0 42px;
+}
+
+.contact-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.contact-kicker {
+  margin-bottom: 10px;
+  font-family: "DM Mono", monospace;
+  font-size: 9px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.contact-heading h2 {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(72px, 9vw, 150px);
+  font-weight: 800;
+  line-height: 0.78;
+  letter-spacing: -0.075em;
+  text-transform: uppercase;
+}
+
+.contact-heading h2 span {
+  color: #5d73ff;
+}
+
+.contact-side {
+  align-self: end;
+  padding-bottom: 4px;
+}
+
+.contact-side p {
+  margin: 0 0 28px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 15px;
+  line-height: 1.45;
+  letter-spacing: -0.02em;
+}
+
+.contact-availability {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  border: 1px solid rgba(8, 8, 8, 0.55);
+  padding: 11px 15px;
+}
+
+.contact-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #080808;
+  box-shadow: 0 0 0 5px rgba(8, 8, 8, 0.08);
+}
+
+.contact-availability div {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.contact-availability span {
+  font-family: "DM Mono", monospace;
+  font-size: 8px;
+  letter-spacing: 0.12em;
+  opacity: 0.55;
+}
+
+.contact-availability strong {
+  font-family: "DM Mono", monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+/* =========================
+   EMAIL + RESUME
+========================= */
+
+.contact-actions {
+  border-top: 1px solid rgba(8, 8, 8, 0.75);
+  border-bottom: 1px solid rgba(8, 8, 8, 0.75);
+}
+
+.contact-email-block {
+  padding: 18px 0;
+}
+
+.contact-email-label {
+  display: block;
+  margin-bottom: 8px;
+  font-family: "DM Mono", monospace;
+  font-size: 9px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  opacity: 0.65;
+}
+
+.contact-email-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.contact-email {
+  color: #080808;
+  font-family: "DM Mono", monospace;
+  font-size: clamp(20px, 2.1vw, 30px);
+  line-height: 1;
+  text-decoration: none;
+  letter-spacing: -0.05em;
+  transition: opacity 0.2s ease;
+}
+
+.contact-email:hover {
+  opacity: 0.55;
+}
+
+.contact-copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  border: 1px solid #080808;
+  background: transparent;
+  color: #080808;
+  padding: 10px 14px;
+  font-family: "DM Mono", monospace;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.contact-copy:hover {
+  background: #080808;
+  color: #c9f052;
+}
+
+/* Resume */
+
+.contact-resume-block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  border-top: 1px solid rgba(8, 8, 8, 0.3);
+  padding: 13px 0;
+}
+
+.contact-resume-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.contact-resume-icon {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid #080808;
+}
+
+.contact-resume-info > div:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.contact-resume-info span {
+  font-family: "DM Mono", monospace;
+  font-size: 8px;
+  letter-spacing: 0.12em;
+  opacity: 0.6;
+}
+
+.contact-resume-info strong {
+  font-family: "DM Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.contact-resume-actions {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.contact-resume-button,
+.contact-resume-download {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #080808;
+  text-decoration: none;
+  border: 1px solid #080808;
+  font-family: "DM Mono", monospace;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.contact-resume-button {
+  gap: 8px;
+  padding: 10px 13px;
+}
+
+.contact-resume-download {
+  width: 36px;
+  height: 36px;
+}
+
+.contact-resume-button:hover,
+.contact-resume-download:hover {
+  background: #080808;
+  color: #c9f052;
+}
+
+/* =========================
+   SOCIALS
+========================= */
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1.05fr repeat(3, 1fr);
+  border-left: 1px solid rgba(8, 8, 8, 0.7);
+  border-bottom: 1px solid rgba(8, 8, 8, 0.7);
+}
+
+.contact-grid-label,
+.contact-social {
+  min-height: 105px;
+  border-right: 1px solid rgba(8, 8, 8, 0.7);
+}
+
+.contact-grid-label {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 16px 18px;
+  font-family: "DM Mono", monospace;
+  font-size: 8px;
+  letter-spacing: 0.12em;
+}
+
+.contact-grid-label span:last-child {
+  opacity: 0.5;
+}
+
+.contact-social {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  color: #080808;
+  text-decoration: none;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease;
+}
+
+.contact-social:hover {
+  background: #080808;
+  color: #c9f052;
+}
+
+.contact-social > svg {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+}
+
+.contact-social-icon {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid currentColor;
+  flex-shrink: 0;
+}
+
+.contact-social-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.contact-social-icon.contact-x {
+  font-family: "DM Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.contact-social-text {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding-top: 1px;
+}
+
+.contact-social-text span {
+  font-family: "DM Mono", monospace;
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  opacity: 0.6;
+}
+
+.contact-social-text strong {
+  font-family: "DM Mono", monospace;
+  font-size: 10px;
+  font-weight: 500;
+}
+
+/* =========================
+   BOTTOM
+========================= */
+
+.contact-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 0;
+}
+
+.contact-bottom-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.contact-big-mark {
+  display: grid;
+  place-items: center;
+  width: 35px;
+  height: 35px;
+  background: #080808;
+  color: #c9f052;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.contact-bottom-left div,
+.contact-bottom-right {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.contact-bottom-left div span,
+.contact-bottom-right span {
+  font-family: "DM Mono", monospace;
+  font-size: 8px;
+  letter-spacing: 0.1em;
+}
+
+.contact-bottom-left small {
+  font-family: "DM Mono", monospace;
+  font-size: 8px;
+  opacity: 0.55;
+}
+
+.contact-bottom-right {
+  text-align: right;
+}
+
+.contact-bottom-right span {
+  opacity: 0.55;
+}
+
+.contact-bottom-right strong {
+  font-family: "DM Mono", monospace;
+  font-size: 9px;
+  font-weight: 500;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.contact-footer {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  min-height: 42px;
+  border-top: 1px solid rgba(8, 8, 8, 0.75);
+  font-family: "DM Mono", monospace;
+  font-size: 8px;
+  letter-spacing: 0.1em;
+}
+
+.contact-footer > span:last-child {
+  text-align: right;
+}
+
+.contact-footer-mark {
+  display: flex;
+  gap: 4px;
+}
+
+.contact-footer-mark span {
+  width: 7px;
+  height: 7px;
+  background: #080808;
+}
+
+.contact-footer-mark span:nth-child(2) {
+  background: #5d73ff;
+}
+
+.contact-footer-mark span:nth-child(3) {
+  background: #ff7195;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+  .contact-section {
+    padding: 24px 24px 0;
+  }
+
+  .contact-main {
+    grid-template-columns: 1fr;
+    gap: 35px;
+    padding: 38px 0;
+  }
+
+  .contact-side {
+    align-self: start;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .contact-grid-label {
+    display: none;
+  }
+
+  .contact-social {
+    min-height: 100px;
+  }
+}
+
+@media (max-width: 600px) {
+  .contact-section {
+    padding: 20px 18px 0;
+  }
+
+  .contact-header {
+    grid-template-columns: auto 1fr;
+  }
+
+  .contact-header-label {
+    display: none;
+  }
+
+  .contact-main {
+    padding: 34px 0 30px;
+  }
+
+  .contact-heading h2 {
+    font-size: clamp(60px, 18vw, 100px);
+  }
+
+  .contact-side p {
+    font-size: 14px;
+  }
+
+  .contact-email-row {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .contact-email {
+    font-size: 19px;
+    word-break: break-word;
+  }
+
+  .contact-resume-block {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .contact-resume-actions {
+    width: 100%;
+  }
+
+  .contact-resume-button {
+    flex: 1;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-social {
+    min-height: 86px;
+    border-bottom: 1px solid rgba(8, 8, 8, 0.7);
+  }
+
+  .contact-bottom {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .contact-bottom-right {
+    text-align: left;
+  }
+
+  .contact-footer {
+    min-height: 38px;
+  }
+}
