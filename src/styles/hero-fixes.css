@@ -1,0 +1,237 @@
+/* =========================================================
+   HERO — FINAL FRAME + SPACING FIX
+========================================================= */
+
+.hero-section {
+  position: relative;
+
+  width: 100%;
+  height: 100svh;
+  min-height: 0;
+
+  box-sizing: border-box;
+
+  /*
+    IMPORTANT:
+    The hero itself owns the complete frame.
+  */
+  border: 2px solid #111 !important;
+  border-bottom: 2px solid #111 !important;
+
+  margin: 0 !important;
+
+  padding: 0 !important;
+
+  display: grid;
+
+  grid-template-rows:
+    68px
+    minmax(0, 1fr);
+
+  overflow: hidden;
+
+  z-index: 2;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.hero-nav {
+  min-height: 0;
+  height: 100%;
+}
+
+
+/* =========================================================
+   MAIN HERO AREA
+========================================================= */
+
+.hero-main {
+  min-height: 0;
+  height: 100%;
+
+  /*
+    Fill every pixel between the nav
+    and the bottom border.
+  */
+  align-items: stretch;
+}
+
+
+/* =========================================================
+   LEFT SIDE
+========================================================= */
+
+.hero-left {
+  height: 100%;
+  min-height: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   RIGHT SIDE
+========================================================= */
+
+.hero-right {
+  height: 100%;
+  min-height: 0;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   REMOVE OLD FOOTER ROW
+========================================================= */
+
+.hero-footer {
+  display: none !important;
+}
+
+
+/* =========================================================
+   KEEP CONTENT BALANCED
+========================================================= */
+
+.hero-copy {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.hero-actions {
+  margin-top: 28px;
+}
+
+.social-links {
+  margin-top: 18px;
+}
+
+
+/* =========================================================
+   OS HINT
+========================================================= */
+
+.os-hint {
+  top: 52px;
+  right: 16px;
+
+  z-index: 100;
+}
+
+
+/* =========================================================
+   DESKTOP
+========================================================= */
+
+@media (min-width: 1001px) {
+  .hero-section {
+    height: 100svh;
+  }
+
+  .hero-main {
+    height: 100%;
+  }
+
+  .hero-left,
+  .hero-right {
+    height: 100%;
+  }
+}
+
+
+/* =========================================================
+   SHORT DESKTOP
+========================================================= */
+
+@media (max-height: 760px) and (min-width: 1001px) {
+  .hero-section {
+    height: 100svh;
+
+    grid-template-rows:
+      62px
+      minmax(0, 1fr);
+  }
+
+  .hero-actions {
+    margin-top: 20px;
+  }
+
+  .social-links {
+    margin-top: 14px;
+  }
+
+  .os-hint {
+    top: 48px;
+  }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+  .hero-section {
+    height: 100svh;
+    min-height: 600px;
+
+    grid-template-rows:
+      64px
+      minmax(0, 1fr);
+  }
+
+  .hero-left {
+    justify-content: center;
+  }
+
+  .hero-footer {
+    display: none !important;
+  }
+
+  .os-hint {
+    display: none;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+  .hero-section {
+    height: auto;
+    min-height: 100svh;
+
+    display: block;
+
+    overflow: visible;
+
+    border: 2px solid #111 !important;
+  }
+
+  .hero-main {
+    height: auto;
+  }
+
+  .hero-left,
+  .hero-right {
+    height: auto;
+  }
+
+  .hero-left {
+    justify-content: flex-start;
+  }
+
+  .hero-footer {
+    display: none !important;
+  }
+}

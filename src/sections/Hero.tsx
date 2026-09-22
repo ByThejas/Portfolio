@@ -1,24 +1,44 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import "./Hero.css";
+import "../styles/character-hero.css";
 
-const identityStates = [
+const characters = [
   {
     number: "01",
-    title: "SOFTWARE",
-    subtitle: "/ PRODUCT",
-    description: "Building useful things.",
+    name: "NARUTO UZUMAKI",
+    shortName: "NARUTO",
+    role: "SHINOBI / NEVER GIVE UP",
+    image: "/characters/naruto.png",
+    quote:
+      "Hard work is worthless for those that don't believe in themselves.",
   },
   {
     number: "02",
-    title: "CREATIVE",
-    subtitle: "/ SYSTEMS",
-    description: "Obsessed with details.",
+    name: "TONY STARK",
+    shortName: "TONY STARK",
+    role: "INVENTOR / BUILDER",
+    image: "/characters/tony-stark.png",
+    quote:
+      "Genius, billionaire, playboy, philanthropist.",
   },
   {
     number: "03",
-    title: "EXPLORER",
-    subtitle: "/ LIFE",
-    description: "Learning through everything.",
+    name: "ITACHI UCHIHA",
+    shortName: "ITACHI",
+    role: "SHINOBI / SELF-AWARENESS",
+    image: "/characters/itachi.png",
+    quote:
+      "Growth occurs when one goes beyond one's limits.",
+  },
+  {
+    number: "04",
+    name: "LEVI ACKERMAN",
+    shortName: "LEVI",
+    role: "SOLDIER / DISCIPLINE",
+    image: "/characters/levi.png",
+    quote:
+      "Give up on your dreams and die.",
   },
 ];
 
@@ -28,28 +48,29 @@ const terminalLines = [
   { prompt: true, text: "location" },
   { prompt: false, text: "bengaluru, india" },
   { prompt: true, text: "focus" },
-  { prompt: false, text: "software / products / growth" },
+  {
+    prompt: false,
+    text: "software / products / growth",
+  },
   { prompt: true, text: "status" },
   { prompt: false, text: "building..." },
 ];
 
-const codeLines = [
-  "const thejas = {",
-  "  focus: 'product',",
-  "  craft: 'detail',",
-  "  status: 'building'",
-  "};",
-];
-
 export function Hero() {
   const visualRef = useRef<HTMLDivElement>(null);
+
   const topbarClicks = useRef(0);
+
   const topbarTimer = useRef<number | null>(null);
 
-  const [identityIndex, setIdentityIndex] = useState(0);
-  const [terminalOpen, setTerminalOpen] = useState(false);
-  const [typedCode, setTypedCode] = useState("");
-  const [cursorVisible, setCursorVisible] = useState(true);
+  const [characterIndex, setCharacterIndex] =
+    useState(0);
+
+  const [terminalOpen, setTerminalOpen] =
+    useState(false);
+
+  const [cursorVisible, setCursorVisible] =
+    useState(true);
 
   const [cardOffset, setCardOffset] = useState({
     x: 0,
@@ -63,34 +84,12 @@ export function Hero() {
     visible: false,
   });
 
-  const identity = identityStates[identityIndex];
+  const character =
+    characters[characterIndex];
 
-  /* =========================
-     CODE TYPING
-  ========================== */
-
-  useEffect(() => {
-    const fullCode = codeLines.join("\n");
-    let index = 0;
-
-    const interval = window.setInterval(() => {
-      index += 1;
-
-      setTypedCode(fullCode.slice(0, index));
-
-      if (index >= fullCode.length) {
-        window.clearInterval(interval);
-      }
-    }, 32);
-
-    return () => {
-      window.clearInterval(interval);
-    };
-  }, []);
-
-  /* =========================
+  /* =========================================================
      BLINKING CURSOR
-  ========================== */
+  ========================================================= */
 
   useEffect(() => {
     const interval = window.setInterval(() => {
@@ -102,17 +101,39 @@ export function Hero() {
     };
   }, []);
 
-  /* =========================
-     KEYBOARD
-  ========================== */
+  /* =========================================================
+     CHARACTER AUTO ROTATION
+  ========================================================= */
 
   useEffect(() => {
-    const handleKeyboard = (event: KeyboardEvent) => {
+    const interval = window.setInterval(() => {
+      setCharacterIndex((current) => {
+        return (
+          (current + 1) %
+          characters.length
+        );
+      });
+    }, 7000);
+
+    return () => {
+      window.clearInterval(interval);
+    };
+  }, []);
+
+  /* =========================================================
+     KEYBOARD
+  ========================================================= */
+
+  useEffect(() => {
+    const handleKeyboard = (
+      event: KeyboardEvent
+    ) => {
       if (
         (event.ctrlKey || event.metaKey) &&
         event.key.toLowerCase() === "k"
       ) {
         event.preventDefault();
+
         setTerminalOpen((value) => !value);
       }
 
@@ -121,19 +142,27 @@ export function Hero() {
       }
     };
 
-    window.addEventListener("keydown", handleKeyboard);
+    window.addEventListener(
+      "keydown",
+      handleKeyboard
+    );
 
     return () => {
-      window.removeEventListener("keydown", handleKeyboard);
+      window.removeEventListener(
+        "keydown",
+        handleKeyboard
+      );
     };
   }, []);
 
-  /* =========================
+  /* =========================================================
      CUSTOM CURSOR
-  ========================== */
+  ========================================================= */
 
   useEffect(() => {
-    const handleMouseMove = (event: MouseEvent) => {
+    const handleMouseMove = (
+      event: MouseEvent
+    ) => {
       setCursor((current) => ({
         ...current,
         x: event.clientX,
@@ -145,29 +174,47 @@ export function Hero() {
         return;
       }
 
-      const rect = visualRef.current.getBoundingClientRect();
+      const rect =
+        visualRef.current.getBoundingClientRect();
 
-      const relativeX = event.clientX - rect.left;
-      const relativeY = event.clientY - rect.top;
+      const relativeX =
+        event.clientX - rect.left;
+
+      const relativeY =
+        event.clientY - rect.top;
 
       const centerX = rect.width / 2;
+
       const centerY = rect.height / 2;
 
-      const moveX = (relativeX - centerX) / 45;
-      const moveY = (relativeY - centerY) / 45;
+      const moveX =
+        (relativeX - centerX) / 45;
+
+      const moveY =
+        (relativeY - centerY) / 45;
 
       setCardOffset({
-        x: Math.max(-12, Math.min(12, moveX)),
-        y: Math.max(-12, Math.min(12, moveY)),
+        x: Math.max(
+          -12,
+          Math.min(12, moveX)
+        ),
+        y: Math.max(
+          -12,
+          Math.min(12, moveY)
+        ),
       });
     };
 
-    const handleMouseOut = (event: MouseEvent) => {
-      const target = event.target as HTMLElement;
+    const handleMouseOut = (
+      event: MouseEvent
+    ) => {
+      const target =
+        event.target as HTMLElement;
 
-      const interactive = target.closest(
-        "a, button, .interactive-identity, .code-card"
-      );
+      const interactive =
+        target.closest(
+          "a, button, .interactive-identity"
+        );
 
       if (!interactive) {
         return;
@@ -179,12 +226,16 @@ export function Hero() {
       }));
     };
 
-    const handleMouseOver = (event: MouseEvent) => {
-      const target = event.target as HTMLElement;
+    const handleMouseOver = (
+      event: MouseEvent
+    ) => {
+      const target =
+        event.target as HTMLElement;
 
-      const interactive = target.closest(
-        "a, button, .interactive-identity, .code-card"
-      );
+      const interactive =
+        target.closest(
+          "a, button, .interactive-identity"
+        );
 
       if (!interactive) {
         setCursor((current) => ({
@@ -196,7 +247,9 @@ export function Hero() {
       }
 
       const cursorLabel =
-        interactive.getAttribute("data-cursor") || "VIEW";
+        interactive.getAttribute(
+          "data-cursor"
+        ) || "VIEW";
 
       setCursor((current) => ({
         ...current,
@@ -212,7 +265,9 @@ export function Hero() {
       }));
     };
 
-    const handleMouseEnter = (event: MouseEvent) => {
+    const handleMouseEnter = (
+      event: MouseEvent
+    ) => {
       setCursor((current) => ({
         ...current,
         x: event.clientX,
@@ -221,45 +276,89 @@ export function Hero() {
       }));
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("mouseover", handleMouseOver);
-    window.addEventListener("mouseout", handleMouseOut);
-    window.addEventListener("mouseleave", handleMouseLeave);
-    window.addEventListener("mouseenter", handleMouseEnter);
+    window.addEventListener(
+      "mousemove",
+      handleMouseMove
+    );
+
+    window.addEventListener(
+      "mouseover",
+      handleMouseOver
+    );
+
+    window.addEventListener(
+      "mouseout",
+      handleMouseOut
+    );
+
+    window.addEventListener(
+      "mouseleave",
+      handleMouseLeave
+    );
+
+    window.addEventListener(
+      "mouseenter",
+      handleMouseEnter
+    );
 
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("mouseover", handleMouseOver);
-      window.removeEventListener("mouseout", handleMouseOut);
-      window.removeEventListener("mouseleave", handleMouseLeave);
-      window.removeEventListener("mouseenter", handleMouseEnter);
+      window.removeEventListener(
+        "mousemove",
+        handleMouseMove
+      );
+
+      window.removeEventListener(
+        "mouseover",
+        handleMouseOver
+      );
+
+      window.removeEventListener(
+        "mouseout",
+        handleMouseOut
+      );
+
+      window.removeEventListener(
+        "mouseleave",
+        handleMouseLeave
+      );
+
+      window.removeEventListener(
+        "mouseenter",
+        handleMouseEnter
+      );
     };
   }, []);
 
-  /* =========================
-     IDENTITY CARD
-  ========================== */
+  /* =========================================================
+     CHARACTER CARD
+  ========================================================= */
 
-  const cycleIdentity = () => {
-    setIdentityIndex((current) => {
-      return (current + 1) % identityStates.length;
+  const cycleCharacter = () => {
+    setCharacterIndex((current) => {
+      return (
+        (current + 1) %
+        characters.length
+      );
     });
   };
 
-  /* =========================
+  /* =========================================================
      SECRET TERMINAL
-  ========================== */
+  ========================================================= */
 
   const handleTopbarClick = () => {
     topbarClicks.current += 1;
 
     if (topbarTimer.current) {
-      window.clearTimeout(topbarTimer.current);
+      window.clearTimeout(
+        topbarTimer.current
+      );
     }
 
-    topbarTimer.current = window.setTimeout(() => {
-      topbarClicks.current = 0;
-    }, 1000);
+    topbarTimer.current =
+      window.setTimeout(() => {
+        topbarClicks.current = 0;
+      }, 1000);
 
     if (topbarClicks.current >= 3) {
       setTerminalOpen(true);
@@ -269,14 +368,20 @@ export function Hero() {
 
   return (
     <>
-      {/* =========================
+      {/* =====================================================
           CUSTOM CURSOR
-      ========================== */}
+      ===================================================== */}
 
       <div
         className={`custom-cursor ${
-          cursor.visible ? "cursor-visible" : ""
-        } ${cursor.label ? "cursor-expanded" : ""}`}
+          cursor.visible
+            ? "cursor-visible"
+            : ""
+        } ${
+          cursor.label
+            ? "cursor-expanded"
+            : ""
+        }`}
         style={{
           left: cursor.x,
           top: cursor.y,
@@ -289,12 +394,19 @@ export function Hero() {
         )}
       </div>
 
-      <section className="hero-section">
-        <div className="hero-grid" aria-hidden="true" />
+      {/* =====================================================
+          HERO
+      ===================================================== */}
 
-        {/* =========================
+      <section className="hero-section">
+        <div
+          className="hero-grid"
+          aria-hidden="true"
+        />
+
+        {/* ===================================================
             NAVIGATION
-        ========================== */}
+        =================================================== */}
 
         <header className="hero-nav">
           <a
@@ -302,21 +414,26 @@ export function Hero() {
             className="brand"
             data-cursor="HOME"
           >
-            <span className="brand-mark">&lt;/&gt;</span>
+            <span className="brand-mark">
+              &lt;/&gt;
+            </span>
+
             <span>THEJAS</span>
           </a>
 
           <nav className="nav-links">
-            <a href="#work" data-cursor="WORK">
+            <a
+              href="#work"
+              data-cursor="WORK"
+            >
               WORK
             </a>
 
-            <a href="#about" data-cursor="ABOUT">
+            <a
+              href="#about"
+              data-cursor="ABOUT"
+            >
               ABOUT
-            </a>
-
-            <a href="#lab" data-cursor="LAB">
-              LAB
             </a>
           </nav>
 
@@ -330,21 +447,33 @@ export function Hero() {
           </a>
         </header>
 
-        {/* =========================
+        {/* ===================================================
             MAIN
-        ========================== */}
+        =================================================== */}
 
         <div className="hero-main">
-          {/* LEFT */}
+          {/* =================================================
+              LEFT
+          ================================================= */}
 
           <div className="hero-copy">
             <motion.div
               className="hero-label"
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
+              initial={{
+                opacity: 0,
+                y: 15,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
+              transition={{
+                duration: 0.5,
+              }}
             >
-              <span className="hero-number">01</span>
+              <span className="hero-number">
+                01
+              </span>
 
               <span className="hero-label-text">
                 INTRODUCTION
@@ -353,12 +482,23 @@ export function Hero() {
 
             <motion.div
               className="hero-heading"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{
+                opacity: 0,
+                y: 30,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
               transition={{
                 duration: 0.8,
                 delay: 0.1,
-                ease: [0.22, 1, 0.36, 1],
+                ease: [
+                  0.22,
+                  1,
+                  0.36,
+                  1,
+                ],
               }}
             >
               <p className="hello-text">
@@ -376,14 +516,21 @@ export function Hero() {
 
             <motion.p
               className="hero-description"
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{
+                opacity: 0,
+                y: 15,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
               transition={{
                 duration: 0.6,
                 delay: 0.35,
               }}
             >
-              I build digital products and software
+              I build digital products and
+              software
               <br className="desktop-break" />
               with an eye for detail.
             </motion.p>
@@ -392,8 +539,14 @@ export function Hero() {
 
             <motion.div
               className="hero-actions"
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{
+                opacity: 0,
+                y: 15,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
               transition={{
                 duration: 0.6,
                 delay: 0.45,
@@ -404,7 +557,10 @@ export function Hero() {
                 className="primary-button"
                 data-cursor="WORK"
               >
-                <span>VIEW MY WORK</span>
+                <span>
+                  VIEW MY WORK
+                </span>
+
                 <span>↗</span>
               </a>
 
@@ -414,6 +570,7 @@ export function Hero() {
                 data-cursor="ABOUT"
               >
                 <span>ABOUT ME</span>
+
                 <span>↓</span>
               </a>
             </motion.div>
@@ -422,14 +579,26 @@ export function Hero() {
 
             <motion.div
               className="social-section"
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{
+                opacity: 0,
+                y: 15,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
               transition={{
                 duration: 0.6,
                 delay: 0.6,
               }}
             >
+              <span className="social-label">
+                CONNECT WITH ME
+              </span>
+
               <div className="social-links">
+                {/* GITHUB */}
+
                 <a
                   href="https://github.com/ByThejas"
                   target="_blank"
@@ -458,6 +627,8 @@ export function Hero() {
                     ↗
                   </span>
                 </a>
+
+                {/* LINKEDIN */}
 
                 <a
                   href="https://www.linkedin.com/in/thejasumesh/"
@@ -494,6 +665,8 @@ export function Hero() {
                   </span>
                 </a>
 
+                {/* X */}
+
                 <a
                   href="https://x.com/ByThejas"
                   target="_blank"
@@ -525,17 +698,30 @@ export function Hero() {
             </motion.div>
           </div>
 
-          {/* RIGHT */}
+          {/* =================================================
+              RIGHT VISUAL
+          ================================================= */}
 
           <motion.div
             ref={visualRef}
             className="hero-visual"
-            initial={{ opacity: 0, x: 25 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{
+              opacity: 0,
+              x: 25,
+            }}
+            animate={{
+              opacity: 1,
+              x: 0,
+            }}
             transition={{
               duration: 0.8,
               delay: 0.25,
-              ease: [0.22, 1, 0.36, 1],
+              ease: [
+                0.22,
+                1,
+                0.36,
+                1,
+              ],
             }}
           >
             {/* TOP BAR */}
@@ -546,17 +732,28 @@ export function Hero() {
               data-cursor="THEJAS.OS"
               aria-label="Open THEJAS OS"
             >
-              <span>THEJAS / 001</span>
+              <span>
+                THEJAS / 001
+              </span>
+
+              {/* CTRL + K IS NOW INSIDE THE TOP BAR */}
+              <div className="os-hint">
+                <span>CTRL</span>
+                <span>+</span>
+                <span>K</span>
+                <small>OPEN OS</small>
+              </div>
+
               <span>2026</span>
             </button>
 
-            {/* IDENTITY CARD */}
+            {/* CHARACTER CARD */}
 
             <button
-              className="interactive-identity"
-              onClick={cycleIdentity}
+              className="interactive-identity character-card"
+              onClick={cycleCharacter}
               data-cursor="CHANGE"
-              aria-label="Change identity card"
+              aria-label={`Change character. Current: ${character.name}`}
             >
               <div
                 className="identity-lime-frame"
@@ -566,138 +763,196 @@ export function Hero() {
               />
 
               <div
-                className="portrait-placeholder"
+                className="portrait-placeholder character-portrait"
                 style={{
-                  transform: `translate(${cardOffset.x * 0.55}px, ${
+                  transform: `translate(${
+                    cardOffset.x * 0.55
+                  }px, ${
                     cardOffset.y * 0.55
                   }px)`,
                 }}
               >
-                <div className="portrait-content">
-                  <span className="portrait-small">
-                    THEJAS
-                  </span>
+                {/* CHARACTER IMAGE */}
 
-                  <motion.span
-                    key={identity.number}
-                    className="portrait-large"
+                <div className="character-image-wrap">
+                  <motion.img
+                    key={character.image}
+                    src={character.image}
+                    alt={character.name}
+                    className="character-image"
+                    draggable="false"
                     initial={{
                       opacity: 0,
-                      scale: 0.8,
-                      rotate: -5,
+                      scale: 1.06,
                     }}
                     animate={{
                       opacity: 1,
                       scale: 1,
-                      rotate: 0,
                     }}
                     transition={{
-                      duration: 0.45,
+                      duration: 0.55,
+                      ease: [
+                        0.22,
+                        1,
+                        0.36,
+                        1,
+                      ],
                     }}
-                  >
-                    {identity.number}
-                  </motion.span>
+                  />
+                </div>
 
-                  <div className="identity-bottom">
-                    <span>
-                      {identity.title}
+                {/* BLACK TINT */}
+
+                <div className="character-overlay" />
+
+                {/* CHARACTER CONTENT */}
+
+                <div className="portrait-content">
+                  <div className="character-top">
+                    <span className="portrait-small">
+                      THEJAS / MOTIVATION
                     </span>
 
-                    <span>
-                      {identity.subtitle}
+                    <span className="character-number">
+                      {character.number}
                     </span>
                   </div>
 
-                  <span className="identity-hint">
-                    CLICK TO CHANGE
-                  </span>
+                  {/* QUOTE */}
+
+                  <motion.div
+                    key={`${character.number}-quote`}
+                    className="character-quote"
+                    initial={{
+                      opacity: 0,
+                      y: 18,
+                    }}
+                    animate={{
+                      opacity: 1,
+                      y: 0,
+                    }}
+                    transition={{
+                      duration: 0.45,
+                      delay: 0.1,
+                    }}
+                  >
+                    <span className="quote-mark">
+                      "
+                    </span>
+
+                    <p>
+                      {character.quote}
+                    </p>
+                  </motion.div>
+
+                  {/* CHARACTER META */}
+
+                  <div className="identity-bottom character-meta">
+                    <span>
+                      {character.name}
+                    </span>
+
+                    <span>
+                      {character.role}
+                    </span>
+                  </div>
                 </div>
+              </div>
+
+              {/* CHARACTER DOTS */}
+
+              <div className="character-dots">
+                {characters.map(
+                  (item, index) => (
+                    <span
+                      key={item.number}
+                      className={
+                        index ===
+                        characterIndex
+                          ? "active"
+                          : ""
+                      }
+                    />
+                  )
+                )}
               </div>
             </button>
 
             {/* VISUAL NOTES */}
 
             <div className="visual-note note-left">
-              {identity.description}
+              BUILDING USEFUL THINGS.
               <span />
             </div>
 
-            <div className="visual-note note-right">
-              / code
-              <br />
-              / products
-              <br />
-              / travel
-              <br />
-              / growth
-              <span />
-            </div>
+            {/* NOTE-RIGHT REMOVED */}
 
-            {/* CODE CARD */}
-
-            <div
-              className="code-card"
-              data-cursor="CODE"
-            >
-              <div className="code-header">
-                <span>developer.ts</span>
-
-                <div className="code-status">
-                  <span />
-                  <span />
-                  <span />
-                </div>
-              </div>
-
-              <div className="code-body">
-                {typedCode
-                  .split("\n")
-                  .map((line, index) => (
-                    <p
-                      key={`${line}-${index}`}
-                      className={
-                        line.startsWith("  ")
-                          ? "indent"
-                          : ""
-                      }
-                    >
-                      {line}
-                    </p>
-                  ))}
-
-                <span
-                  className={`typing-cursor ${
-                    cursorVisible
-                      ? "typing-visible"
-                      : ""
-                  }`}
-                >
-                  |
-                </span>
-              </div>
-            </div>
-
-            {/* OS HINT */}
-
-            <div className="os-hint">
-              <span>CTRL</span>
-              <span>+</span>
-              <span>K</span>
-              <small>OPEN OS</small>
-            </div>
           </motion.div>
         </div>
+
+        {/* ===================================================
+            HERO FOOTER
+        =================================================== */}
+
+        <motion.footer
+          className="hero-footer"
+          initial={{
+            opacity: 0,
+          }}
+          animate={{
+            opacity: 1,
+          }}
+          transition={{
+            duration: 0.7,
+            delay: 0.75,
+          }}
+        >
+          <div className="footer-block">
+            <span className="footer-label">
+              BASED IN
+            </span>
+
+            <span className="footer-value">
+              BENGALURU, INDIA
+            </span>
+          </div>
+
+          <div className="footer-block">
+            <span className="footer-label">
+              CURRENTLY
+            </span>
+
+            <span className="footer-value">
+              <span className="status-dot" />
+              BUILDING DIGITAL PRODUCTS
+            </span>
+          </div>
+
+          <div className="footer-block footer-scroll">
+            <span className="footer-label">
+              SCROLL TO EXPLORE
+            </span>
+
+            <span className="scroll-arrow">
+              ↓
+            </span>
+          </div>
+        </motion.footer>
       </section>
 
-      {/* =========================
+      {/* =====================================================
           THEJAS.OS TERMINAL
-      ========================== */}
+      ===================================================== */}
 
       {terminalOpen && (
         <motion.div
           className="terminal-overlay"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          initial={{
+            opacity: 0,
+          }}
+          animate={{
+            opacity: 1,
+          }}
         >
           <motion.div
             className="terminal-window"
@@ -716,7 +971,9 @@ export function Hero() {
             }}
           >
             <div className="terminal-header">
-              <span>THEJAS.OS</span>
+              <span>
+                THEJAS.OS
+              </span>
 
               <div className="terminal-controls">
                 <span />
@@ -741,31 +998,37 @@ export function Hero() {
               </div>
 
               <div className="terminal-output">
-                {terminalLines.map((line, index) => (
-                  <div
-                    className={`terminal-line ${
-                      line.prompt
-                        ? "terminal-prompt"
-                        : "terminal-response"
-                    }`}
-                    key={`${line.text}-${index}`}
-                  >
-                    {line.prompt && (
-                      <span className="terminal-symbol">
-                        &gt;
-                      </span>
-                    )}
+                {terminalLines.map(
+                  (line, index) => (
+                    <div
+                      className={`terminal-line ${
+                        line.prompt
+                          ? "terminal-prompt"
+                          : "terminal-response"
+                      }`}
+                      key={`${line.text}-${index}`}
+                    >
+                      {line.prompt && (
+                        <span className="terminal-symbol">
+                          &gt;
+                        </span>
+                      )}
 
-                    <span>{line.text}</span>
-                  </div>
-                ))}
+                      <span>
+                        {line.text}
+                      </span>
+                    </div>
+                  )
+                )}
               </div>
 
               <div className="terminal-bottom">
                 <span>&gt;</span>
 
                 <span className="terminal-blink">
-                  {cursorVisible ? "_" : " "}
+                  {cursorVisible
+                    ? "_"
+                    : " "}
                 </span>
 
                 <span className="terminal-shortcut">

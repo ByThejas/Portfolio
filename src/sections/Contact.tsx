@@ -1,34 +1,20 @@
-import { useState } from "react";
 import {
   ArrowUpRight,
-  Check,
-  Copy,
+  Mail,
 } from "lucide-react";
-import { Reveal } from "../components/Reveal";
 import "./Contact.css";
 
-const email = "thejasumesh.dev@gmail.com";
+const email = "thejasnox12@gmail.com";
+
+function openEmail() {
+  window.location.href =
+    `mailto:${email}?subject=Hello%20Thejas`;
+}
 
 export function Contact() {
-  const [copied, setCopied] = useState(false);
-
-  const copyEmail = async () => {
-    try {
-      await navigator.clipboard.writeText(email);
-
-      setCopied(true);
-
-      window.setTimeout(() => {
-        setCopied(false);
-      }, 1800);
-    } catch {
-      window.location.href = `mailto:${email}`;
-    }
-  };
-
   return (
     <section id="contact" className="contact-section">
-      <Reveal className="contact-header">
+      <div className="contact-header">
         <div className="contact-index">
           <span>06</span>
           <span>CONTACT</span>
@@ -39,9 +25,9 @@ export function Contact() {
         <span className="contact-header-label">
           OPEN TO GOOD IDEAS
         </span>
-      </Reveal>
+      </div>
 
-      <Reveal className="contact-main" delay={0.05}>
+      <div className="contact-main">
         <div className="contact-heading">
           <span className="contact-kicker">
             HAVE SOMETHING IN MIND?
@@ -56,10 +42,9 @@ export function Contact() {
 
         <div className="contact-side">
           <p>
-            Whether it's a product,
-            a collaboration or just
-            an interesting idea —
-            I'd love to hear about it.
+            Whether it's a product, a collaboration or
+            just an interesting idea, I'd love to hear
+            about it.
           </p>
 
           <div className="contact-availability">
@@ -71,13 +56,9 @@ export function Contact() {
             </div>
           </div>
         </div>
-      </Reveal>
+      </div>
 
-      <Reveal
-        className="contact-email-block"
-        delay={0.08}
-        y={35}
-      >
+      <div className="contact-email-block">
         <span className="contact-email-label">
           DROP ME A LINE
         </span>
@@ -91,41 +72,29 @@ export function Contact() {
           </a>
 
           <button
+            type="button"
             className="contact-copy"
-            onClick={copyEmail}
-            aria-label="Copy email address"
+            onClick={openEmail}
+            aria-label="Open default email application"
           >
-            {copied ? (
-              <>
-                <Check size={16} />
-                COPIED
-              </>
-            ) : (
-              <>
-                <Copy size={16} />
-                COPY EMAIL
-              </>
-            )}
+            <Mail size={18} />
+            EMAIL ME
           </button>
         </div>
-      </Reveal>
+      </div>
 
-      <div className="contact-grid">
-        <Reveal
-          className="contact-grid-label"
-          delay={0.04}
-          y={25}
-        >
+      <div className="contact-social-section">
+        <div className="contact-social-heading">
           <span>ELSEWHERE</span>
           <span>01 — 03</span>
-        </Reveal>
+        </div>
 
-        <Reveal delay={0.08} y={30}>
+        <div className="contact-social-links">
           <a
             href="https://github.com/ByThejas"
             target="_blank"
             rel="noopener noreferrer"
-            className="contact-social"
+            className="contact-social-button"
           >
             <div className="contact-social-icon">
               <svg
@@ -139,23 +108,19 @@ export function Contact() {
               </svg>
             </div>
 
-            <div>
-              <span>GITHUB</span>
-              <strong>@BYTHEJAS</strong>
-            </div>
+            <span>GITHUB</span>
+            <strong>@BYTHEJAS</strong>
 
-            <ArrowUpRight size={18} />
+            <ArrowUpRight size={16} />
           </a>
-        </Reveal>
 
-        <Reveal delay={0.16} y={30}>
           <a
             href="https://www.linkedin.com/in/thejasumesh/"
             target="_blank"
             rel="noopener noreferrer"
-            className="contact-social"
+            className="contact-social-button"
           >
-            <div className="contact-social-icon">
+            <div className="contact-social-icon linkedin-icon">
               <svg
                 viewBox="0 0 24 24"
                 aria-hidden="true"
@@ -167,41 +132,31 @@ export function Contact() {
               </svg>
             </div>
 
-            <div>
-              <span>LINKEDIN</span>
-              <strong>/THEJASUMESH</strong>
-            </div>
+            <span>LINKEDIN</span>
+            <strong>/THEJASUMESH</strong>
 
-            <ArrowUpRight size={18} />
+            <ArrowUpRight size={16} />
           </a>
-        </Reveal>
 
-        <Reveal delay={0.24} y={30}>
           <a
             href="https://x.com/ByThejas"
             target="_blank"
             rel="noopener noreferrer"
-            className="contact-social"
+            className="contact-social-button"
           >
             <div className="contact-social-icon contact-x">
               X
             </div>
 
-            <div>
-              <span>X / TWITTER</span>
-              <strong>@BYTHEJAS</strong>
-            </div>
+            <span>X</span>
+            <strong>@BYTHEJAS</strong>
 
-            <ArrowUpRight size={18} />
+            <ArrowUpRight size={16} />
           </a>
-        </Reveal>
+        </div>
       </div>
 
-      <Reveal
-        className="contact-bottom"
-        delay={0.08}
-        y={35}
-      >
+      <div className="contact-bottom">
         <div className="contact-bottom-left">
           <span className="contact-big-mark">
             T
@@ -217,9 +172,9 @@ export function Contact() {
           <span>BASED IN</span>
           <strong>BENGALURU, INDIA</strong>
         </div>
-      </Reveal>
+      </div>
 
-      <Reveal className="contact-footer" delay={0.05}>
+      <div className="contact-footer">
         <span>THEJAS / CONTACT</span>
 
         <div className="contact-footer-mark">
@@ -229,7 +184,7 @@ export function Contact() {
         </div>
 
         <span>06 / 06</span>
-      </Reveal>
+      </div>
     </section>
   );
 }

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Reveal } from "../components/Reveal";
 import "./About.css";
 
 type StackCategory =
@@ -157,7 +156,7 @@ export function About() {
 
   return (
     <section id="about" className="about-section">
-      <Reveal className="about-header">
+      <div className="about-header">
         <div className="about-index">
           <span>03</span>
           <span>ABOUT ME</span>
@@ -168,9 +167,9 @@ export function About() {
         <span className="about-header-label">
           SOFTWARE ENGINEER
         </span>
-      </Reveal>
+      </div>
 
-      <Reveal className="about-intro" delay={0.05}>
+      <div className="about-intro">
         <div>
           <h2>
             I BUILD
@@ -185,21 +184,21 @@ export function About() {
           </span>
 
           <p>
-            I'm a software engineer who enjoys turning
-            ideas into digital products that are
-            functional, thoughtful and actually nice
-            to use.
+            I build digital products, solve problems and
+            occasionally create new problems to solve
+            later.
           </p>
 
           <p>
-            I care about the details — from how a system
-            works underneath to how it feels when someone
-            interacts with it.
+            I care about good systems, thoughtful
+            interfaces and the small details most people
+            don't notice, which is probably why I notice
+            them.
           </p>
         </div>
-      </Reveal>
+      </div>
 
-      <Reveal className="about-grid" delay={0.08} y={45}>
+      <div className="about-grid">
         <div className="identity-card">
           <div className="identity-photo">
             <img
@@ -239,18 +238,14 @@ export function About() {
           <p className="about-small-text">
             Whether it's a productivity system, a
             developer tool or an experiment that started
-            as a random idea at 2 AM — I enjoy the process
+            as a random idea at 2 AM, I enjoy the process
             of taking something from concept to a working
             product.
           </p>
         </div>
-      </Reveal>
+      </div>
 
-      <Reveal
-        className="experience-section"
-        delay={0.05}
-        y={40}
-      >
+      <div className="experience-section">
         <div className="experience-heading">
           <div className="experience-heading-left">
             <span>02</span>
@@ -308,13 +303,9 @@ export function About() {
             </ul>
           </div>
         </article>
-      </Reveal>
+      </div>
 
-      <Reveal
-        className="tech-stack-section"
-        delay={0.05}
-        y={40}
-      >
+      <div className="tech-stack-section">
         <div className="tech-stack-heading">
           <div>
             <span className="tech-stack-number">
@@ -379,41 +370,35 @@ export function About() {
             )}
           </div>
         </div>
-      </Reveal>
+      </div>
 
-      <Reveal
-        className="currently-section"
-        delay={0.05}
-        y={35}
-      >
+      <div className="currently-section">
         <div className="currently-heading">
           <span>04</span>
           <span>CURRENTLY</span>
         </div>
 
         <div className="currently-grid">
-          {currently.map((item, index) => (
-            <Reveal
-              key={item.label}
+          {currently.map((item) => (
+            <div
               className="currently-item"
-              delay={index * 0.08}
-              y={20}
+              key={item.label}
             >
               <span>{item.label}</span>
 
               <strong>{item.value}</strong>
-            </Reveal>
+            </div>
           ))}
         </div>
-      </Reveal>
+      </div>
 
-      <Reveal className="about-footer" delay={0.05}>
+      <div className="about-footer">
         <span>THEJAS / ABOUT</span>
 
         <span>KEEP BUILDING.</span>
 
         <span>03 / 04</span>
-      </Reveal>
+      </div>
     </section>
   );
 }

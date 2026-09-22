@@ -95,7 +95,6 @@ button {
 
 .cursor-label {
   position: absolute;
-
   inset: 0;
 
   display: flex;
@@ -107,12 +106,11 @@ button {
   font-weight: 500;
 
   color: white;
-
   white-space: nowrap;
 }
 
 /* =========================================================
-   HERO — ONE SCREEN
+   HERO
 ========================================================= */
 
 .hero-section {
@@ -135,10 +133,6 @@ button {
 
   background: var(--paper);
 }
-
-/* =========================================================
-   BACKGROUND GRID
-========================================================= */
 
 .hero-grid {
   position: absolute;
@@ -176,7 +170,7 @@ button {
   display: grid;
 
   grid-template-columns:
-    155px
+    235px
     minmax(0, 1fr)
     auto;
 
@@ -191,16 +185,15 @@ button {
   display: flex;
   align-items: center;
 
-  gap: 12px;
+  gap: 14px;
 
-  padding: 0 22px;
+  padding: 0 34px;
 
   border-right: var(--line);
 
   font-family: "Space Grotesk", sans-serif;
 
-  font-size: 15px;
-
+  font-size: 17px;
   font-weight: 700;
 
   letter-spacing: -0.04em;
@@ -209,7 +202,7 @@ button {
 .brand-mark {
   font-family: "DM Mono", monospace;
 
-  font-size: 14px;
+  font-size: 16px;
 
   color: var(--blue);
 }
@@ -220,9 +213,9 @@ button {
   align-items: center;
   justify-content: flex-end;
 
-  gap: 32px;
+  gap: 40px;
 
-  padding: 0 25px;
+  padding: 0 34px;
 
   min-width: 0;
 }
@@ -231,8 +224,7 @@ button {
 .nav-contact {
   font-family: "DM Mono", monospace;
 
-  font-size: 10px;
-
+  font-size: 11px;
   font-weight: 500;
 
   white-space: nowrap;
@@ -273,9 +265,9 @@ button {
 
   align-items: center;
 
-  gap: 10px;
+  gap: 14px;
 
-  padding: 0 20px;
+  padding: 0 27px;
 
   border-left: var(--line);
 
@@ -288,17 +280,15 @@ button {
 
 .nav-contact:hover {
   background: var(--blue);
-
   color: white;
 }
 
 /* =========================================================
-   MAIN HERO GRID
+   MAIN HERO
 ========================================================= */
 
 .hero-main {
   position: relative;
-
   z-index: 2;
 
   min-height: 0;
@@ -339,10 +329,6 @@ button {
   border-right: var(--line);
 }
 
-/* =========================================================
-   INTRO LABEL
-========================================================= */
-
 .hero-label {
   display: inline-flex;
 
@@ -359,27 +345,20 @@ button {
 
 .hero-number {
   display: flex;
-
   align-items: center;
 
   padding: 8px 11px;
 
   background: var(--blue);
-
   color: white;
 }
 
 .hero-label-text {
   display: flex;
-
   align-items: center;
 
   padding: 8px 14px;
 }
-
-/* =========================================================
-   HEADING
-========================================================= */
 
 .hello-text {
   margin: 0;
@@ -425,10 +404,6 @@ button {
   letter-spacing: -0.045em;
 }
 
-/* =========================================================
-   DESCRIPTION
-========================================================= */
-
 .hero-description {
   margin: clamp(22px, 3vh, 32px) 0 0;
 
@@ -460,7 +435,6 @@ button {
   display: inline-flex;
 
   align-items: center;
-
   justify-content: space-between;
 
   gap: 28px;
@@ -504,7 +478,6 @@ button {
 
 .primary-button:hover {
   background: var(--blue);
-
   color: white;
 }
 
@@ -645,6 +618,10 @@ button {
   overflow: hidden;
 }
 
+/* =========================================================
+   VISUAL TOP BAR
+========================================================= */
+
 .visual-topbar {
   position: absolute;
 
@@ -653,19 +630,16 @@ button {
   right: 0;
 
   width: 100%;
-
   height: 44px;
 
   display: flex;
 
   align-items: center;
-
   justify-content: space-between;
 
   padding: 0 16px;
 
   border: 0;
-
   border-bottom: var(--line);
 
   background: transparent;
@@ -675,10 +649,12 @@ button {
   font-size: 10px;
 
   text-align: left;
+
+  z-index: 10;
 }
 
 /* =========================================================
-   IDENTITY CARD
+   CHARACTER CARD
 ========================================================= */
 
 .interactive-identity {
@@ -721,17 +697,13 @@ button {
   position: absolute;
 
   top: 0;
-
-  right: 22px;
-
+  right: 0;
   bottom: 28px;
-
   left: 0;
 
   display: flex;
 
   align-items: center;
-
   justify-content: center;
 
   background: #111;
@@ -742,7 +714,9 @@ button {
 
   overflow: hidden;
 
-  transition: transform 0.15s ease-out;
+  transition:
+    transform 0.15s ease-out,
+    box-shadow 0.2s ease;
 }
 
 .portrait-placeholder::before {
@@ -841,7 +815,6 @@ button {
   position: absolute;
 
   right: 22px;
-
   bottom: 20px;
 
   font-family: "DM Mono", monospace;
@@ -879,13 +852,11 @@ button {
 
 .note-left {
   bottom: 20px;
-
   left: 16px;
 }
 
 .note-right {
   right: 15px;
-
   bottom: 18px;
 
   text-align: right;
@@ -907,144 +878,38 @@ button {
 }
 
 /* =========================================================
-   CODE CARD
-========================================================= */
-
-.code-card {
-  position: absolute;
-
-  right: 14px;
-
-  bottom: 14px;
-
-  width: min(245px, 43%);
-
-  background: #111;
-
-  color: white;
-
-  border: var(--line);
-
-  box-shadow: 6px 6px 0 var(--black);
-
-  z-index: 8;
-
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
-}
-
-.code-card:hover {
-  transform: translate(-3px, -3px);
-
-  box-shadow: 9px 9px 0 var(--black);
-}
-
-.code-header {
-  height: 31px;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: space-between;
-
-  padding: 0 9px;
-
-  border-bottom: 1px solid #444;
-
-  font-family: "DM Mono", monospace;
-
-  font-size: 8px;
-
-  color: #aaa;
-}
-
-.code-status {
-  display: flex;
-
-  gap: 4px;
-}
-
-.code-status span {
-  width: 6px;
-  height: 6px;
-
-  border-radius: 50%;
-
-  background: var(--lime);
-}
-
-.code-body {
-  position: relative;
-
-  min-height: 115px;
-
-  padding: 11px 13px;
-
-  font-family: "DM Mono", monospace;
-
-  font-size: 9px;
-
-  line-height: 1.7;
-}
-
-.code-body p {
-  margin: 0;
-}
-
-.code-body p:first-child {
-  color: #bd93f9;
-}
-
-.code-body p:nth-child(n + 2) {
-  color: #b8e986;
-}
-
-.code-body p:last-of-type {
-  color: white;
-}
-
-.code-body .indent {
-  padding-left: 13px;
-}
-
-.typing-cursor {
-  display: inline-block;
-
-  margin-left: 2px;
-
-  color: var(--lime);
-
-  opacity: 0;
-}
-
-.typing-visible {
-  opacity: 1;
-}
-
-/* =========================================================
-   OS HINT
+   CENTERED CTRL + K / OPEN OS
 ========================================================= */
 
 .os-hint {
   position: absolute;
 
-  right: 16px;
+  /*
+    The pink top bar is 44px high.
+    22px is therefore its exact vertical center.
+  */
+  top: 22px;
+  left: 50%;
 
-  top: 18px;
+  width: max-content;
+  height: auto;
+
+  transform: translate(-50%, -50%);
 
   display: flex;
 
   align-items: center;
+  justify-content: center;
 
   gap: 4px;
 
-  z-index: 6;
+  z-index: 20;
 
   font-family: "DM Mono", monospace;
 
   font-size: 7px;
+
+  pointer-events: none;
 }
 
 .os-hint span {
@@ -1062,7 +927,7 @@ button {
 }
 
 /* =========================================================
-   FOOTER
+   HERO FOOTER
 ========================================================= */
 
 .hero-footer {
@@ -1159,7 +1024,6 @@ button {
   display: flex;
 
   align-items: center;
-
   justify-content: center;
 
   padding: 25px;
@@ -1189,7 +1053,6 @@ button {
   display: flex;
 
   align-items: center;
-
   justify-content: space-between;
 
   padding: 0 14px;
@@ -1310,7 +1173,7 @@ button {
 }
 
 /* =========================================================
-   SHORT DESKTOP HEIGHT
+   SHORT DESKTOP
 ========================================================= */
 
 @media (max-height: 760px) and (min-width: 1001px) {
@@ -1360,10 +1223,6 @@ button {
     top: 48px;
     bottom: 45px;
   }
-
-  .code-card {
-    bottom: 10px;
-  }
 }
 
 /* =========================================================
@@ -1371,11 +1230,6 @@ button {
 ========================================================= */
 
 @media (max-width: 1000px) {
-  /*
-   * Keep the desktop composition on tablets where possible.
-   * This prevents the hero from becoming unnecessarily tall.
-   */
-
   .hero-section {
     min-height: 600px;
 
@@ -1398,7 +1252,6 @@ button {
 
   .nav-links {
     gap: 18px;
-
     padding: 0 15px;
   }
 
@@ -1448,6 +1301,7 @@ button {
 
   .social-name {
     margin-left: 6px;
+
     font-size: 8px;
   }
 
@@ -1456,8 +1310,8 @@ button {
     right: 7%;
   }
 
-  .code-card {
-    width: 220px;
+  .portrait-placeholder {
+    right: 0;
   }
 
   .visual-note {
@@ -1480,13 +1334,9 @@ button {
     display: none;
   }
 
-  /*
-   * Mobile needs vertical scrolling because the two-column
-   * desktop composition becomes a stacked composition.
-   */
-
   .hero-section {
     height: auto;
+
     min-height: 100svh;
 
     display: block;
@@ -1591,6 +1441,10 @@ button {
     height: 570px;
   }
 
+  .visual-topbar {
+    height: 44px;
+  }
+
   .interactive-identity {
     top: 72px;
 
@@ -1601,12 +1455,12 @@ button {
     left: 35px;
   }
 
-  .portrait-large {
-    font-size: 145px;
+  .portrait-placeholder {
+    right: 0;
   }
 
-  .code-card {
-    width: 220px;
+  .portrait-large {
+    font-size: 145px;
   }
 
   .visual-note.note-right {
@@ -1614,7 +1468,11 @@ button {
   }
 
   .os-hint {
-    display: none;
+    top: 22px;
+
+    height: auto;
+
+    transform: translate(-50%, -50%);
   }
 
   .hero-footer {
@@ -1678,11 +1536,7 @@ button {
   }
 
   .portrait-placeholder {
-    right: 18px;
-  }
-
-  .code-card {
-    width: 205px;
+    right: 0;
   }
 
   .terminal-body {
