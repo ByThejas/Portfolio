@@ -1,237 +1,72 @@
 /* =========================================================
-   HERO — FINAL FRAME + SPACING FIX
+   THEJAS.OS — CTRL + K TOP BAR FIX
 ========================================================= */
 
-.hero-section {
-  position: relative;
+.hero-visual > .os-hint {
+  position: absolute !important;
 
-  width: 100%;
-  height: 100svh;
-  min-height: 0;
+  top: 0 !important;
+  left: 50% !important;
+  right: auto !important;
 
-  box-sizing: border-box;
-
-  /*
-    IMPORTANT:
-    The hero itself owns the complete frame.
-  */
-  border: 2px solid #111 !important;
-  border-bottom: 2px solid #111 !important;
+  width: auto !important;
+  height: 44px !important;
 
   margin: 0 !important;
-
   padding: 0 !important;
 
-  display: grid;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 
-  grid-template-rows:
-    68px
-    minmax(0, 1fr);
+  gap: 4px !important;
 
-  overflow: hidden;
+  transform: translateX(-50%) !important;
 
-  z-index: 2;
+  z-index: 20 !important;
+
+  pointer-events: none !important;
+
+  font-family: "DM Mono", monospace !important;
+  font-size: 7px !important;
+  line-height: 1 !important;
+
+  white-space: nowrap;
 }
 
+.hero-visual > .os-hint span {
+  display: inline-flex;
 
-/* =========================================================
-   NAVIGATION
-========================================================= */
-
-.hero-nav {
-  min-height: 0;
-  height: 100%;
-}
-
-
-/* =========================================================
-   MAIN HERO AREA
-========================================================= */
-
-.hero-main {
-  min-height: 0;
-  height: 100%;
-
-  /*
-    Fill every pixel between the nav
-    and the bottom border.
-  */
-  align-items: stretch;
-}
-
-
-/* =========================================================
-   LEFT SIDE
-========================================================= */
-
-.hero-left {
-  height: 100%;
-  min-height: 0;
-
-  display: flex;
-  flex-direction: column;
+  align-items: center;
   justify-content: center;
 
-  box-sizing: border-box;
+  min-width: 25px;
+  height: 22px;
+
+  padding: 0 5px;
+
+  border: 1px solid var(--black);
+
+  background: rgba(255, 255, 255, 0.35);
+
+  font-family: "DM Mono", monospace;
+  font-size: 7px;
+  line-height: 1;
 }
 
+.hero-visual > .os-hint small {
+  margin-left: 3px;
 
-/* =========================================================
-   RIGHT SIDE
-========================================================= */
+  font-family: "DM Mono", monospace;
+  font-size: 7px;
+  line-height: 1;
 
-.hero-right {
-  height: 100%;
-  min-height: 0;
-
-  box-sizing: border-box;
+  white-space: nowrap;
 }
 
-
-/* =========================================================
-   REMOVE OLD FOOTER ROW
-========================================================= */
-
-.hero-footer {
-  display: none !important;
-}
-
-
-/* =========================================================
-   KEEP CONTENT BALANCED
-========================================================= */
-
-.hero-copy {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-.hero-actions {
-  margin-top: 28px;
-}
-
-.social-links {
-  margin-top: 18px;
-}
-
-
-/* =========================================================
-   OS HINT
-========================================================= */
-
-.os-hint {
-  top: 52px;
-  right: 16px;
-
-  z-index: 100;
-}
-
-
-/* =========================================================
-   DESKTOP
-========================================================= */
-
-@media (min-width: 1001px) {
-  .hero-section {
-    height: 100svh;
-  }
-
-  .hero-main {
-    height: 100%;
-  }
-
-  .hero-left,
-  .hero-right {
-    height: 100%;
-  }
-}
-
-
-/* =========================================================
-   SHORT DESKTOP
-========================================================= */
-
-@media (max-height: 760px) and (min-width: 1001px) {
-  .hero-section {
-    height: 100svh;
-
-    grid-template-rows:
-      62px
-      minmax(0, 1fr);
-  }
-
-  .hero-actions {
-    margin-top: 20px;
-  }
-
-  .social-links {
-    margin-top: 14px;
-  }
-
-  .os-hint {
-    top: 48px;
-  }
-}
-
-
-/* =========================================================
-   TABLET
-========================================================= */
-
-@media (max-width: 1000px) {
-  .hero-section {
-    height: 100svh;
-    min-height: 600px;
-
-    grid-template-rows:
-      64px
-      minmax(0, 1fr);
-  }
-
-  .hero-left {
-    justify-content: center;
-  }
-
-  .hero-footer {
-    display: none !important;
-  }
-
-  .os-hint {
-    display: none;
-  }
-}
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
+/* Keep it hidden on mobile */
 @media (max-width: 700px) {
-  .hero-section {
-    height: auto;
-    min-height: 100svh;
-
-    display: block;
-
-    overflow: visible;
-
-    border: 2px solid #111 !important;
-  }
-
-  .hero-main {
-    height: auto;
-  }
-
-  .hero-left,
-  .hero-right {
-    height: auto;
-  }
-
-  .hero-left {
-    justify-content: flex-start;
-  }
-
-  .hero-footer {
+  .hero-visual > .os-hint {
     display: none !important;
   }
 }

@@ -18,16 +18,22 @@
 
 .character-image {
   display: block;
+
   width: 100%;
   height: 100%;
+
   object-fit: cover;
-  object-position: center center;
+  object-position: center;
+
   user-select: none;
   -webkit-user-drag: none;
+
   filter:
     brightness(0.78)
     contrast(1.05);
+
   transform: scale(1.01);
+
   transition:
     transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
     filter 0.5s ease;
@@ -36,8 +42,11 @@
 .character-overlay {
   position: absolute;
   inset: 0;
+
   z-index: 1;
+
   pointer-events: none;
+
   background: rgba(0, 0, 0, 0.24);
 }
 
@@ -48,10 +57,14 @@
 .character-portrait .portrait-content {
   position: absolute;
   inset: 0;
+
   z-index: 4;
+
   display: flex;
   flex-direction: column;
+
   padding: 28px;
+
   color: white;
 }
 
@@ -59,62 +72,92 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+
   width: 100%;
+
   flex: 0 0 auto;
 }
 
 .portrait-small {
   font-family: "DM Mono", monospace;
+
   font-size: 11px;
   font-weight: 700;
+
   letter-spacing: 0.08em;
+
   color: #c9f052;
-  text-transform: uppercase;
+
   text-shadow:
     0 2px 4px rgba(0, 0, 0, 0.9);
 }
 
 .character-number {
   font-family: "DM Sans", sans-serif;
+
   font-size: clamp(54px, 7vw, 82px);
+
   line-height: 0.8;
+
   font-weight: 700;
+
   letter-spacing: -0.06em;
+
   color: rgba(255, 255, 255, 0.95);
+
   text-shadow:
     0 3px 7px rgba(0, 0, 0, 0.85);
 }
 
 .character-quote {
   position: relative;
+
   width: min(88%, 620px);
+
   margin-top: auto;
   margin-bottom: auto;
+
   padding: 20px 0;
+
   flex: 0 1 auto;
 }
 
 .quote-mark {
   display: block;
+
   margin-bottom: 7px;
+
   font-family: Georgia, serif;
+
   font-size: 50px;
+
   line-height: 0.5;
+
   color: #c9f052;
+
   text-shadow:
     0 3px 6px rgba(0, 0, 0, 0.95);
 }
 
 .character-quote p {
   margin: 0;
+
   max-width: 600px;
+
   font-family: "DM Sans", sans-serif;
+
   font-size: clamp(27px, 3vw, 42px);
+
   line-height: 0.99;
+
   font-weight: 700;
+
   letter-spacing: -0.045em;
+
   color: #ffffff;
+
   text-wrap: balance;
+
   text-shadow:
     0 2px 2px rgba(0, 0, 0, 1),
     0 4px 8px rgba(0, 0, 0, 0.95),
@@ -123,13 +166,20 @@
 
 .character-meta {
   position: relative;
+
   z-index: 5;
+
   display: flex;
+
   flex-direction: column;
+
   gap: 7px;
+
   flex: 0 0 auto;
+
   padding-top: 14px;
   padding-bottom: 20px;
+
   text-shadow:
     0 3px 6px rgba(0, 0, 0, 1),
     0 0 15px rgba(0, 0, 0, 0.8);
@@ -137,25 +187,37 @@
 
 .character-meta span:first-child {
   font-family: "DM Sans", sans-serif;
+
   font-size: clamp(25px, 3vw, 38px);
+
   line-height: 0.95;
+
   font-weight: 800;
+
   letter-spacing: -0.045em;
+
   color: #ffffff;
 }
 
 .character-meta span:last-child {
   font-family: "DM Mono", monospace;
+
   font-size: 10px;
+
   line-height: 1;
+
   font-weight: 700;
+
   letter-spacing: 0.08em;
+
   color: #c9f052;
+
   text-transform: uppercase;
 }
 
 .character-card:hover .character-image {
   transform: scale(1.025);
+
   filter:
     brightness(0.74)
     contrast(1.08);
@@ -165,47 +227,84 @@
   box-shadow: 12px 12px 0 var(--black);
 }
 
+/* =========================================================
+   CHARACTER DOTS
+   POSITIONED BELOW THE ENTIRE CHARACTER FRAME
+========================================================= */
+
 .character-dots {
   position: absolute;
+
   left: 50%;
-  bottom: 10px;
+  bottom: -14px;
+
   transform: translateX(-50%);
-  z-index: 10;
+
+  z-index: 20;
+
   display: flex;
+
   align-items: center;
+  justify-content: center;
+
   gap: 6px;
-  padding: 5px 8px;
-  background: rgba(0, 0, 0, 0.72);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(8px);
+
+  padding: 0;
+
+  background: transparent;
+
+  border: 0;
+
+  backdrop-filter: none;
+
+  pointer-events: none;
 }
 
 .character-dots span {
   display: block;
-  width: 6px;
-  height: 6px;
-  background: rgba(255, 255, 255, 0.45);
+
+  width: 7px;
+  height: 7px;
+
+  background: rgba(9, 9, 9, 0.55);
+
+  border: 1px solid rgba(9, 9, 9, 0.8);
+
   transition:
     width 0.2s ease,
     background 0.2s ease;
 }
 
 .character-dots span.active {
-  width: 20px;
+  width: 22px;
+
   background: #c9f052;
+
+  border-color: #090909;
 }
 
 .character-note {
   position: absolute;
+
   top: 14px;
   left: 14px;
+
   z-index: 8;
+
   font-family: "DM Mono", monospace;
+
   font-size: 8px;
+
   letter-spacing: 0.08em;
+
   color: rgba(255, 255, 255, 0.8);
+
   pointer-events: none;
 }
+
+/* =========================================================
+   TABLET
+========================================================= */
 
 @media (max-width: 900px) {
   .character-portrait .portrait-content {
@@ -225,6 +324,10 @@
   }
 }
 
+/* =========================================================
+   MOBILE
+========================================================= */
+
 @media (max-width: 600px) {
   .character-portrait .portrait-content {
     padding: 18px;
@@ -240,17 +343,20 @@
 
   .character-quote {
     width: 100%;
+
     padding-top: 15px;
     padding-bottom: 15px;
   }
 
   .quote-mark {
     font-size: 40px;
+
     margin-bottom: 6px;
   }
 
   .character-quote p {
     font-size: clamp(23px, 7vw, 31px);
+
     line-height: 1;
   }
 
@@ -268,6 +374,6 @@
   }
 
   .character-dots {
-    bottom: 8px;
+    bottom: -14px;
   }
 }
