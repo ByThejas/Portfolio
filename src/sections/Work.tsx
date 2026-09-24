@@ -1,25 +1,22 @@
-import { Reveal } from "../components/Reveal";
 import "./Work.css";
 
 const projects = [
   {
     number: "01",
-    title: "PRODUCTIVITY-116",
+    title: "NADI",
     year: "2026",
-    category: "PRODUCTIVITY SYSTEM",
+    category: "NETWORK ANALYZER",
     description:
-      "A personal productivity journey tracker built around goals, daily commitments, focus, planning and visual progress.",
-    tags: [
-      "React",
-      "Vite",
-      "JavaScript",
-      "CSS",
-      "LocalStorage",
-    ],
-    image: "/projects/productivity-116-preview.png",
-    liveUrl: "https://productivity-116.vercel.app/",
-    githubUrl: "https://github.com/ByThejas/Productivity-116",
+      "A smart network analysis tool designed to visualize network environments, inspect connectivity and surface network dead zones.",
+    tags: ["JavaScript", "HTML", "CSS"],
+    image:
+      "/projects/smart-network-mapper-preview.png",
+    liveUrl:
+      "https://smart-network-mapper.vercel.app/",
+    githubUrl:
+      "https://github.com/ByThejas/Smart-Network-Mapper",
   },
+
   {
     number: "02",
     title: "KAIZEN",
@@ -34,15 +31,39 @@ const projects = [
       "Tailwind CSS",
     ],
     image: "/projects/kaizen-preview.png",
-    liveUrl: "https://kaizen-online.vercel.app/",
-    githubUrl: "https://github.com/sumeethofficial-svg/KAIZEN",
+    liveUrl:
+      "https://kaizen-online.vercel.app/",
+    githubUrl:
+      "https://github.com/sumeethofficial-svg/KAIZEN",
+  },
+
+  {
+    number: "03",
+    title: "PRODUCTIVITY-116",
+    year: "2026",
+    category: "PRODUCTIVITY SYSTEM",
+    description:
+      "A personal productivity journey tracker built around goals, daily commitments, focus, planning and visual progress.",
+    tags: [
+      "React",
+      "Vite",
+      "JavaScript",
+      "CSS",
+      "LocalStorage",
+    ],
+    image:
+      "/projects/productivity-116-preview.png",
+    liveUrl:
+      "https://productivity-116.vercel.app/",
+    githubUrl:
+      "https://github.com/ByThejas/Productivity-116",
   },
 ];
 
 export function Work() {
   return (
     <section id="work" className="work-section">
-      <Reveal className="work-header">
+      <div className="work-header">
         <div className="work-index">
           <span>02</span>
           <span>SELECTED WORK</span>
@@ -50,10 +71,12 @@ export function Work() {
 
         <div className="work-header-line" />
 
-        <span className="work-count">02 PROJECTS</span>
-      </Reveal>
+        <span className="work-count">
+          03 PROJECTS
+        </span>
+      </div>
 
-      <Reveal className="work-intro" delay={0.05}>
+      <div className="work-intro">
         <div>
           <h2>
             SELECTED
@@ -72,15 +95,13 @@ export function Work() {
             and systems I've built along the way.
           </p>
         </div>
-      </Reveal>
+      </div>
 
       <div className="project-grid">
-        {projects.map((project, index) => (
-          <Reveal
-            key={project.title}
+        {projects.map((project) => (
+          <article
             className="project-card"
-            delay={0.08 + index * 0.12}
-            y={45}
+            key={project.title}
           >
             <div className="project-preview">
               <div className="preview-background" />
@@ -105,9 +126,11 @@ export function Work() {
                   </div>
 
                   <div className="browser-address">
-                    {project.title === "PRODUCTIVITY-116"
-                      ? "productivity-116.vercel.app"
-                      : "kaizen-online.vercel.app"}
+                    {project.title === "NADI"
+                      ? "smart-network-mapper.vercel.app"
+                      : project.title === "KAIZEN"
+                        ? "kaizen-online.vercel.app"
+                        : "productivity-116.vercel.app"}
                   </div>
 
                   <span className="browser-menu">
@@ -163,7 +186,9 @@ export function Work() {
               <div className="project-bottom">
                 <div className="project-tags">
                   {project.tags.map((tag) => (
-                    <span key={tag}>{tag}</span>
+                    <span key={tag}>
+                      {tag}
+                    </span>
                   ))}
                 </div>
 
@@ -176,11 +201,23 @@ export function Work() {
                   >
                     <svg
                       viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.8"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                       aria-hidden="true"
                     >
-                      <circle cx="12" cy="12" r="9" />
+                      <circle
+                        cx="12"
+                        cy="12"
+                        r="9"
+                      />
+
                       <path d="M3 12h18" />
+
                       <path d="M12 3c2.4 2.4 3.6 5.4 3.6 9S14.4 18.6 12 21" />
+
                       <path d="M12 3c-2.4 2.4-3.6 5.4-3.6 9S9.6 18.6 12 21" />
                     </svg>
                   </a>
@@ -197,27 +234,29 @@ export function Work() {
                     >
                       <path
                         fill="currentColor"
-                        d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.3 9.41 7.87 10.94.58.1.79-.25.79-.56v-2.17c-3.2.7-3.87-1.36-3.87-1.36-.53-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.67 1.25 3.32.96.1-.74.4-1.25.73-1.54-2.55-.29-5.23-1.28-5.23-5.69 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.47.11-3.06 0 0 .96-.31 3.15 1.18a10.9 10.9 0 0 1 5.74 0c2.19-1.49 3.15-1.18 3.15-1.18.62 1.59.23 2.77.11 3.06.73.81 1.18 1.84 1.18 3.1 0 4.42-2.69 5.4-5.25 5.68.41.36.78 1.07.78 2.16v3.2c0 .31.21.67.8.56A11.52 11.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"
+                        d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.44 9.8 8.2 11.39.6.11.82-.26.82-.58 0-.29-.01-1.05-.02-2.06-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.33-1.76-1.33-1.76-1.09-.75.08-.74.08-.74 1.21.09 1.85 1.24 1.85 1.24 1.07 1.84 2.8 1.31 3.49 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.34-5.47-5.95 0-1.31.47-2.38 1.24-3.22 0 0-1.01-.32 3.3 1.23a11.48 11.48 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.17.77.84 1.24 1.91 1.24 3.22 0 4.62-2.81 5.65-5.49 5.94.43.37.81 1.1.81 2.22 0 1.6-.01 2.88-.01 3.27 0 .32.22.69.83.57C20.56 21.79 24 17.31 24 12 24 5.37 18.63 0 12 0Z"
                       />
                     </svg>
                   </a>
                 </div>
               </div>
             </div>
-          </Reveal>
+          </article>
         ))}
       </div>
 
-      <Reveal className="work-footer" delay={0.1}>
-        <span>02 / 02</span>
+      <div className="work-footer">
+        <span>03 / 03</span>
 
         <span>
           MORE PROJECTS
-          <span className="coming">COMING SOON</span>
+          <span className="coming">
+            COMING SOON
+          </span>
         </span>
 
         <span>↓ SCROLL</span>
-      </Reveal>
+      </div>
     </section>
   );
 }

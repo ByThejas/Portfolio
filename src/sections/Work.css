@@ -747,3 +747,26 @@
     font-size: 7px;
   }
 }
+
+/* =========================================================
+   PROJECT PREVIEW — REMOVE EMPTY SPACE BELOW IMAGE
+========================================================= */
+
+.project-preview .browser-window {
+  height: auto;
+}
+
+.project-preview .browser-screen {
+  height: auto;
+  min-height: 0;
+  aspect-ratio: auto;
+  overflow: hidden;
+}
+
+.project-preview .browser-screen img {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  object-fit: contain;
+}
